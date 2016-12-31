@@ -1,0 +1,79 @@
+/* * * PADDING * */ 
+.p0 {padding: 0}
+.pbottom0 {padding-bottom: 0} 
+.ptop0 {padding-top: 0} 
+.pleft0 {padding-left: 0} 
+.pright0 {padding-right: 0} 
+
+.p5 {padding: 5px} 
+.pbottom5 {padding-bottom: 5px} 
+.ptop5 {padding-top: 5px} 
+.pleft5 {padding-left: 5px} 
+.pright5 {padding-right: 5px} 
+
+.p10 {padding: 10px}
+.pbottom10 {padding-bottom: 10px} 
+.ptop10 {padding-top: 10px} 
+.pleft10 {padding-left: 10px} 
+.pright10 {padding-right: 10px} 
+
+.p15 {padding: 15px}
+.pbottom15 {padding-bottom: 15px} 
+.ptop15 {padding-top: 15px} 
+.pleft15 {padding-left: 15px} 
+.pright15 {padding-right: 15px} 
+
+.p20 {padding: 20px}
+.pbottom20 {padding-bottom: 20px} 
+.ptop20 {padding-top: 20px} 
+.pleft20 {padding-left: 20px} 
+.pright20 {padding-right: 20px} 
+
+.p25 {padding: 25px}
+.pbottom25 {padding-bottom: 25px} 
+.ptop25 {padding-top: 25px} 
+.pleft25 {padding-left: 25px} 
+.pright25 {padding-right: 25px} 
+
+/* * * MARGIN * */ 
+.m0 {margin: 0} 
+.mbottom0 {margin-bottom: 0} 
+.mtop0 {margin-top: 0} 
+.mleft0 {margin-left: 0} 
+.mright0 {margin-right: 0} 
+
+.m10 {margin: 10px} 
+.mbottom10 {margin-bottom: 10px} 
+.mtop10 {margin-top: 10px} 
+.mleft10 {margin-left: 10px} 
+.mright10 {margin-right: 10px} 
+
+.m15 {margin: 15px} 
+.mbottom15 {margin-bottom: 15px} 
+.mtop15 {margin-top: 15px} 
+.mleft15 {margin-left: 15px} 
+.mright15 {margin-right: 15px} 
+.mbottom-15 {margin-bottom: -15px} 
+.mtop-15 {margin-top: -15px} 
+.mleft-15 {margin-left: -15px} 
+.mright-15 {margin-right: -15px} 
+
+.m20 {margin: 20px} 
+.mbottom20 {margin-bottom: 20px} 
+.mtop20 {margin-top: 20px} 
+.mleft20 {margin-left: 20px} 
+.mright20 {margin-right: 20px} 
+.mbottom-20 {margin-bottom: -20px} 
+.mtop-20 {margin-top: -20px} 
+.mleft-20 {margin-left: -20px} 
+.mright-20 {margin-right: -20px}
+
+.m30 {margin: 30px} 
+.mbottom30 {margin-bottom: 30px} 
+.mtop30 {margin-top: 30px} 
+.mleft30 {margin-left: 30px} 
+.mright30 {margin-right: 30px} 
+.mbottom-30 {margin-bottom: -30px} 
+.mtop-30 {margin-top: -30px} 
+.mleft-30 {margin-left: -30px} 
+.mright-30 {margin-right: -30px}

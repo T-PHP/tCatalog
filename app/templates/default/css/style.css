@@ -1,0 +1,101 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #f2f4f9;
+}
+
+.h1, h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+/* HEADER */
+.tcatalog-header{
+    background: #274072;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/* END HEADER */
+
+/* FOOTER */
+.tcatalog-footer{
+    margin-top: 20px;
+    background: #274072;
+    color: #F0F0F0;
+    padding: 20px;
+}
+
+.tcatalog-footer .copyright{
+    margin-top: 20px;
+}
+/* END HEADER */
+
+/* TOP MENU */
+.tcatalog-menu{
+    background: #F2F4F9;
+    border-bottom: 1px solid #ccc;
+}
+
+.tcatalog-nav-menu{
+    margin-bottom: 0;
+    border: 0;
+    background: #F2F4F9;
+}
+
+.tcatalog-nav-menu .navbar-nav>li>a:focus, .tcatalog-nav-menu .navbar-nav>li>a:hover{
+    color: #fff;
+    background: #63B2F5;
+    border-top: 0;
+}
+
+.tcatalog-nav-menu .navbar-nav>.active>a, .tcatalog-nav-menu .navbar-nav>.active>a:focus, .tcatalog-nav-menu .navbar-nav>.active>a:hover{
+    background: #63B2F5;
+    color: #fff;
+}
+
+/* END TOP MENU */
+
+/* GENERAL MODULE */
+.module {
+    background-color: #ffffff;
+    border-bottom: 1px solid #cccccc;
+    -webkit-box-shadow: 0 0 5px 0 #cccccc;
+    -moz-box-shadow: 0 0 5px 0 #cccccc;
+    box-shadow: 0 0 5px 0 #cccccc;
+    margin-bottom: 20px;
+    padding: 25px;
+}
+
+.module-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}  
+.module-title i {
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    color: #ffffff;
+    background-color: #384452;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-right: 5px; 
+    text-align: center;
+}
+/* END GENERAL MODULE */
+
+/* NEWSLETTER MODULE */
+.newsletter_mod {
+    background: #324e79;
+    padding: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    position: relative;
+}
+/* END NEWSLETTER MODULE */
+
