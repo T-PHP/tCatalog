@@ -28,6 +28,16 @@ use Helpers\Session;
           <div class="box">
             <div class="box-header">
               <h3 class="box-title"><?php echo Language::showAdmin('General', 'Brands'); ?></h3>
+              <div class="pull-right">
+                <div class="form-group">
+                    <label class="radio-inline">
+                      <input type="radio" name="status" value="0" <?php if($data['brand']['0']->status == 0): ?> checked <?php endif; ?>> Disable
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="status" value="1" <?php if($data['brand']['0']->status == 1): ?> checked <?php endif; ?>> Enable
+                    </label>
+                </div>
+              </div>
             </div>
                 <div class="box-body">
                     <div class="form-group">

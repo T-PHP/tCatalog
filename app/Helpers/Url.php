@@ -87,6 +87,7 @@ class Url
         }
     }
 
+    
     /**
      * Created the relative address to the template folder.
      *

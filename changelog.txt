@@ -1,0 +1,2 @@
+- 12/03/17 : 
+-- Ajout panier (bug à corriger lorsque quantité = 0 ou vide. il faut recharger la page pour que l'action soit prise en compte)

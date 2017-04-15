@@ -23,6 +23,11 @@ class Seo extends Controller
     public function __construct()
     {
         parent::__construct();
+        
+        if(!Session::get('loggedin')){
+			Url::redirect(URL_ADMIN.'/login');
+		}
+        
         $this->seo = new \Models\Admin\Seo();
         $this->language->loadAdmin('Seo');
         
@@ -84,9 +89,16 @@ class Seo extends Controller
         $data['title'] = Language::showAdmin('Robots.txt File', 'Seo');
         $data['token'] = Csrf::makeToken();
         
-        $file = DIR.'robots.txt';
+        $server_path = getcwd();
+        $file = $server_path.'/robots.txt';
         $data['content'] = file_get_contents($file);
+        $content = $_POST['content'];
         
+        if(isset($_POST['editRobotsTxt'])){
+            $fopent = fopen($file, "w");
+            fwrite($fopent, $content);
+            Url::Redirect(DIR.URL_ADMIN.'/seo/robots-txt', $fullpath = true);
+        }
         
         View::renderTemplateAdmin('header', $data);
         View::renderAdmin('seo/robots-txt', $data, $error);

@@ -55,6 +55,7 @@ class Categories extends Controller
         
         //Get Products by Category (Listing)
         $data['products'] = $data['products'] = $this->products->getProductsByCategory($id_category, $this->active_language[0]->id_language, $pages->getLimit());
+      //  var_dump($data['products']); exit;
         $data['products_total'] = count($this->products->getProductsByCategoryTotal($id_category, $this->active_language[0]->id_language));
         $pages->setTotal($data['products_total']);
         $data['pageLinks'] = $pages->pageLinks();

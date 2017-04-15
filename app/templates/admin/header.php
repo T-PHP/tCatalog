@@ -366,8 +366,8 @@ use Core\Language;
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> <?php echo Language::showAdmin('Brands List', 'Navigation'); ?></a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> <?php echo Language::showAdmin('Add Brand', 'Navigation'); ?></a></li>
+                <li><a href="<?php echo DIR.URL_ADMIN; ?>/brands"><i class="fa fa-circle-o"></i> <?php echo Language::showAdmin('Brands List', 'Navigation'); ?></a></li>
+                <li><a href="<?php echo DIR.URL_ADMIN; ?>/brands/add"><i class="fa fa-circle-o"></i> <?php echo Language::showAdmin('Add Brand', 'Navigation'); ?></a></li>
               </ul>
             </li>
             
@@ -401,9 +401,7 @@ use Core\Language;
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo DIR.URL_ADMIN; ?>/products"><i class="fa fa-circle-o"></i> <?php echo Language::showAdmin('Redirects', 'Navigation'); ?></a></li>
-            <li><a href="<?php echo DIR.URL_ADMIN; ?>/products/add"><i class="fa fa-circle-o"></i> <?php echo Language::showAdmin('Robots.txt', 'Navigation'); ?></a></li>
-            <li><a href="<?php echo DIR.URL_ADMIN; ?>/products"><i class="fa fa-circle-o"></i> <?php echo Language::showAdmin('Meta Robots', 'Navigation'); ?></a></li>
+            <li><a href="<?php echo DIR.URL_ADMIN; ?>/settings/languages"><i class="fa fa-circle-o"></i> <?php echo Language::showAdmin('Languages', 'Navigation'); ?></a></li>
           </ul>
         </li>
           

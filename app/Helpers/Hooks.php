@@ -57,6 +57,7 @@ class Hooks
             'headerRight',
             'topMenu',
             'columnLeft', 
+            'homeCenter', 
             'footer',
             'js',
             'routes',

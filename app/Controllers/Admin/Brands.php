@@ -24,6 +24,10 @@ class Brands extends Controller
     public function __construct()
     {
         parent::__construct();
+        if(!Session::get('loggedin')){
+			Url::redirect(URL_ADMIN.'/login');
+		}
+        
         $this->brands = new \Models\Admin\Brands();
         $this->seo = new \Models\Admin\Seo();
         $this->language->loadAdmin('Brands');
@@ -48,6 +52,7 @@ class Brands extends Controller
         $( document ).ready(function() {
           $(function () {
             $("#brands").DataTable({
+              "order": [[ 3, "asc" ]], 
               "paging": true,
               "lengthChange": true,
               "searching": true,
@@ -93,13 +98,19 @@ class Brands extends Controller
         ';
         
         if(isset($_POST['addBrand'])){
-			$name = $_POST['name'];
+            $name = $_POST['name'];
 			$short_description = $_POST['short_description'];
             $long_description = $_POST['long_description'];
             $meta_title = $_POST['meta_title'];
             $meta_description = $_POST['meta_description'];
             $meta_robots = $_POST['meta_robots'];
-            $url = Url::generateUrl($name);
+            $url = $_POST['url'];
+            
+            if(!empty($url)):
+                $url = Url::generateUrl($url);
+            else:
+                $url = Url::generateUrl($name);
+            endif;
             
             if($name == ''){
 				$error = Language::showAdmin('Name is required', 'Brands');
@@ -107,9 +118,7 @@ class Brands extends Controller
 
 			if(!$error){
                 
-               
-                
-                
+                //Insert Brand
                 $brandData = array(
                     'status' => '', 
                 );
@@ -123,7 +132,7 @@ class Brands extends Controller
                     'meta_title' => $meta_title, 
                     'meta_description' => $meta_description, 
                     'meta_robots' => $meta_robots, 
-                    'url' => Url::generateUrl($url), 
+                    'url' => $url, 
 
                 );
                 $this->brands->insertBrandInfos($brandInfosData);
@@ -159,7 +168,7 @@ class Brands extends Controller
         ';
         
 		if(isset($_POST['editBrand'])){
-            
+            $status = $_POST['status'];
             $name = $_POST['name'];
 			$short_description = $_POST['short_description'];
             $long_description = $_POST['long_description'];
@@ -174,66 +183,69 @@ class Brands extends Controller
             
 			if(!$error){
                 
-                 if($_FILES['image']['size'] > 0){
-                    if (!is_dir(IMG_BRAND.$id_brand.'')) {
-                        mkdir(IMG_BRAND.$id_brand.'');
+                //Image
+                if($_FILES['image']['size'] > 0){
+                    //Create Folder
+                    if (!is_dir(URL_IMG_BRAND.$id_brand.'')) {
+                        mkdir(URL_IMG_BRAND.$id_brand.'');
                     }
-
+                    
                     $extension_img = substr($_FILES['image']['name'], -4);
                     $name_without_extension = substr(($_FILES['image']['name']), 0, -4);   
                     $image_name = Url::generateUrl($name_without_extension).$extension_img;
                 
-                    $file = IMG_BRAND.$id_brand.'/'.$image_name;
-                    $file_mini = IMG_BRAND.$id_brand.'/m-'.$image_name;
+                    $file = URL_IMG_BRAND.$id_brand.'/'.$image_name;
+                    $file_small = URL_IMG_BRAND.$id_brand.'/s-'.$image_name;
+                    $file_medium = URL_IMG_BRAND.$id_brand.'/m-'.$image_name;
+                    $file_large = URL_IMG_BRAND.$id_brand.'/l-'.$image_name;
+                     
+                    //Uploaded image
                     move_uploaded_file($_FILES['image']['tmp_name'], $file);
-                    move_uploaded_file($_FILES['image']['tmp_name'], $file_mini);
-
-                    $img = new SimpleImage($file);
-                    $img->save($file, 70);
-
-                    $img_mini = new SimpleImage($file);
-                    $img_mini->load($file)->fit_to_width(850)->fit_to_height(355)->save($file_mini);
-                }
+                    move_uploaded_file($_FILES['image']['tmp_name'], $file_small);
+                    move_uploaded_file($_FILES['image']['tmp_name'], $file_medium);
+                    move_uploaded_file($_FILES['image']['tmp_name'], $file_large);
+                    
+                    //Resize & Save images
+                    $image = new SimpleImage($file);
+                    $image->save($file);
+                    
+                    $img_small = new SimpleImage($file);
+                    $img_small->maxareafill(300,300, 255, 255, 255);
+                    $img_small->save($file_small);
+                    
+                    $img_medium = new SimpleImage($file);
+                    $img_medium->maxareafill(600,600, 255, 255, 255);
+                    $img_medium->save($file_medium);
+                    
+                    $img_large = new SimpleImage($file);
+                    $img_large->maxareafill(1000,1000, 255, 255, 255);
+                    $img_large->save($file_large);
+                }    
+                
                 
                 //Update Brand Data
 				$brandData = array(
                     'image' => $image_name, 
-                    'status' => '',
+                    'status' => $status,
                 );
                 $where = array('id_brand' => $id_brand);
 				$this->brands->updateBrand($brandData,$where);
                 
-                
-                if(empty($data['brands'])):
-                    $brandInfosData = array(
-                        'id_brand' => $id_brand,
-                        'id_language' => $this->active_language[0]->id_language, 
-                        'name' => $name, 
-                        'short_description' => $short_description, 
-                        'long_description' => $long_description, 
-                        'meta_title' => $meta_title, 
-                        'meta_description' => $meta_description, 
-                        'meta_robots' => $meta_robots,  
-                        'url' => Url::generateUrl($url), 
+                $brandInfosData = array(
+                    'id_brand' => $id_brand,
+                    'name' => $name, 
+                    'short_description' => $short_description, 
+                    'long_description' => $long_description, 
+                    'meta_title' => $meta_title, 
+                    'meta_description' => $meta_description, 
+                    'meta_robots' => $meta_robots,  
+                    'url' => Url::generateUrl($url), 
 
-                   );
-                   $this->brands->insertBrandInfos($brandInfosData);
-                else:
-                    $brandInfosData = array(
-                        'id_brand' => $id_brand,
-                        'name' => $name, 
-                        'short_description' => $short_description, 
-                        'long_description' => $long_description, 
-                        'meta_title' => $meta_title, 
-                        'meta_description' => $meta_description, 
-                        'meta_robots' => $meta_robots,  
-                        'url' => Url::generateUrl($url), 
-
-                    );
-                    $where = array('id_brand' => $id_brand, 'id_language' => $this->active_language[0]->id_language);
-                    $this->brands->updateBrandInfos($brandInfosData,$where);
-                endif;
+                );
+                $where = array('id_brand' => $id_brand, 'id_language' => $this->active_language[0]->id_language);
+                $this->brands->updateBrandInfos($brandInfosData,$where);
 				
+                //Session message & Redirect
 				Session::set('message',Language::showAdmin('Brand updated', 'Brands'));
                 Url::Redirect(DIR.URL_ADMIN.'/brands/edit/'.$id_brand, $fullpath = true);
 				

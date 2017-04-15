@@ -34,6 +34,7 @@ use Helpers\Session;
                   <th><?php echo Language::showAdmin('ID', 'Brands'); ?></th>
                   <th><?php echo Language::showAdmin('Image', 'Brands'); ?></th>
                   <th><?php echo Language::showAdmin('Name', 'Brands'); ?></th>
+                  <th><?php echo Language::showAdmin('Sort', 'Brands'); ?></th>
                   <th><?php echo Language::showAdmin('Action', 'Brands'); ?></th>
                 </tr>
                 </thead>
@@ -41,8 +42,15 @@ use Helpers\Session;
                 <?php foreach($data['brands'] as $brand): ?>
                 <tr>
                   <td><?php echo $brand->id_brand; ?></td>
-                  <td>-</td>
+                  <td>
+                    <?php if (!empty($brand->image)): ?>
+                            <img src="<?php echo DIR.URL_IMG_BRAND.$brand->id_brand.'/s-'.$brand->image; ?>" height='100'>
+                    <?php else: ?>
+                            <p class="alert alert-danger text-center"><?php echo Language::showAdmin('Images', 'Brands'); ?></p>
+                    <?php endif; ?>  
+                  </td>
                   <td><?php echo $brand->name; ?></td>
+                  <td><?php echo $brand->sort; ?></td>
                   <td>
                       <a href="<?php echo DIR.URL_ADMIN.'/brands/edit/'.$brand->id_brand; ?>"><i class="fa fa-pencil"></i> Edit </a>
                       <a href="javascript:delBrand('<?php echo $brand->id_brand; ?>');"><i class="fa fa-trash"></i> Del </a>
@@ -55,6 +63,7 @@ use Helpers\Session;
                   <th><?php echo Language::showAdmin('ID', 'Brands'); ?></th>
                   <th><?php echo Language::showAdmin('Image', 'Brands'); ?></th>
                   <th><?php echo Language::showAdmin('Name', 'Brands'); ?></th>
+                  <th><?php echo Language::showAdmin('Sort', 'Brands'); ?></th>
                   <th><?php echo Language::showAdmin('Action', 'Brands'); ?></th>
                 </tr>
                 </tfoot>

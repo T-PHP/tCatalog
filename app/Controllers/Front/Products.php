@@ -12,6 +12,7 @@ namespace Controllers\Front;
 use Core\Language;
 use Core\Controller;
 use Core\View;
+use Helpers\Data;
 use Helpers\Database;
 use Helpers\Url;
 
@@ -37,7 +38,8 @@ class Products extends Controller
         //Product Informations
         $data['product'] = $this->products->getProduct($id_product, $this->active_language[0]->id_language);
         $data['attributes_groups'] = $this->products->getProductAttributes($id_product, $this->active_language[0]->id_language);
-       
+        $data['images'] = $this->products->getProductImages($id_product);
+        //Data::vd($data['attributes_groups']); exit;
         //Var
         $title = $data['product'][0]->meta_title;
         $name = $data['product'][0]->name;

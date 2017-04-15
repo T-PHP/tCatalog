@@ -67,6 +67,8 @@ class Categories extends Model {
 				c.id_parent_category = :id_parent_category
             AND 
                 ci.id_language = :id_language
+            AND 
+                c.status = 1
             "
         ,array(':id_parent_category' => $id_parent_category, ':id_language' => $id_language));
 	}

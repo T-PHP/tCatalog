@@ -23,6 +23,11 @@ class Categories extends Controller
     public function __construct()
     {
         parent::__construct();
+        
+        if(!Session::get('loggedin')){
+			Url::redirect(URL_ADMIN.'/login');
+		}
+        
         $this->categories = new \Models\Admin\Categories();
         $this->seo = new \Models\Admin\Seo();
         $this->language->loadAdmin('Categories');
@@ -158,7 +163,7 @@ class Categories extends Controller
         ';
         
 		if(isset($_POST['editCategory'])){
-            
+            $status = $_POST['status'];
             $name = $_POST['name'];
             $id_parent_category = $_POST['id_parent_category'];
 			$short_description = $_POST['short_description'];
@@ -174,7 +179,8 @@ class Categories extends Controller
 
 			if(!$error){
 				$categoryData = array(
-                    'id_parent_category' => $id_parent_category,
+                    'id_parent_category' => $id_parent_category, 
+                    'status' => $status, 
                 );
                 $where = array('id_category' => $id_category);
 				$this->categories->updateCategory($categoryData,$where);

@@ -33,8 +33,10 @@ class Data
      * @param string or array $data
      */
     public static function vd($data)
-    {
+    {   
+        echo '<pre>';
         var_dump($data);
+        echo '</pre>';
     }
 
     /**

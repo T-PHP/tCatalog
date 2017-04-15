@@ -50,7 +50,8 @@ class Logger
      */
     public static function customErrorMsg()
     {
-        echo '<p>An error occured, The error has been reported.</p>';
+        echo '<p>An error occured, The error has been reported.</p>
+        <p><a target="_blank" href="'.DIR.'errorlog.html">clic for view file</a>';
         exit;
     }
 

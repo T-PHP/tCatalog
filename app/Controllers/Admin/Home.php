@@ -13,6 +13,7 @@ use Core\Language;
 use Core\Controller;
 use Core\View;
 use Helpers\Database;
+use Helpers\Session;
 use Helpers\Url;
 
 class Home extends Controller
@@ -21,6 +22,11 @@ class Home extends Controller
     public function __construct()
     {
         parent::__construct();
+        
+        if(!Session::get('loggedin')){
+			Url::redirect(URL_ADMIN.'/login');
+		}
+        
         $this->language->loadAdmin('Home');
         
         //Get Active Language

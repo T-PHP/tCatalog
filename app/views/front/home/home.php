@@ -1,5 +1,9 @@
 <?php
 use Core\Language;
+use Helpers\Hooks;
+
+//initialise hooks
+$hooks = Hooks::get();
 ?>
 
 <div class="container">
@@ -9,3 +13,6 @@ use Core\Language;
         </div>
     </div>
 </div>
+
+
+<?php $hooks->run('homeCenter'); ?>
